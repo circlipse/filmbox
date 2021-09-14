@@ -25,4 +25,6 @@ public class MovieServiceImple implements MovieService {
 		mvMapper.movieinsert(mvList);
 	}
 
+	
+
 }
