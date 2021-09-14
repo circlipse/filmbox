@@ -129,6 +129,8 @@ public class MovieAPI {
             e.printStackTrace();
         }
         model.addAttribute("mvList",mvList);
+//        service.movieinsert(mvList);
+        
     	return "movie/movieList";
     }
     

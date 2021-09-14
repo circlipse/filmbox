@@ -9,7 +9,7 @@ import com.kosta.dto.MovieDTO;
 @Mapper
 public interface MovieMapper {
 
-	public int insertMovie(MovieDTO dto);
 	public List<MovieDTO> getMovieList();
+	public void movieinsert(List<MovieDTO> mvList);
 
 }

@@ -15,14 +15,14 @@ public class MovieServiceImple implements MovieService {
 	private MovieMapper mvMapper;
 	
 	@Override
-	public int insertMovie(MovieDTO dto) {
-		
-		return mvMapper.insertMovie(dto);
+	public List<MovieDTO> getMovieList() {
+		return mvMapper.getMovieList();
 	}
 
 	@Override
-	public List<MovieDTO> getMovieList() {
-		return mvMapper.getMovieList();
+	public void movieinsert(List<MovieDTO> mvList) {
+		// TODO Auto-generated method stub
+		mvMapper.movieinsert(mvList);
 	}
 
 }

@@ -22,9 +22,9 @@ public class ReserveContorller {
 		
 	}
 	
-	@GetMapping("/success")
-	public String reserveSuccess() {
-		
-	}
-	
+//	@GetMapping("/success")
+//	public String reserveSuccess() {
+//		
+//	}
+//	
 }
