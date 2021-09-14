@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
+//삭제
 @Controller
 public class MVTestController {
 	@GetMapping("/test")
@@ -27,7 +29,7 @@ public class MVTestController {
 	}
 	@GetMapping("/mov")
 	public String mov() {
-		return "movie/movieList";
+		return "movie/listtest";
 	}
 	@GetMapping("/imageView/{movieCd}/{title}")
     public String getImage(@PathVariable String movieCd,@PathVariable String title, Model model) {
