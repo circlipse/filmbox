@@ -60,10 +60,11 @@ public class MovieAPI {
     @GetMapping("/mvview")
     public String requestAPI(Model model) {
         // 변수설정
-        //   - 하루전 닐찌
+        //   - 일주일 전 영화데이터 가져오기 (가장 최근데이터임. 실제 이번주껀 아직 없음)
         Calendar cal = Calendar.getInstance();
         cal.setTime(new Date());
         cal.add(Calendar.DATE, -7);
+        
         
         // 변수 설정
         //   - 요청(Request) 인터페이스 Map
@@ -117,19 +118,13 @@ public class MovieAPI {
                 
                 MovieDTO dto = new MovieDTO(rank, movieCd, movieNm, openDt, image);
                 mvList.add(dto);
-//                int result = service.insertMovie(dto);
-//                if(result ==0) {
-//                	System.out.println("삽입 실패");
-//                }else {
-//                	System.out.println("성공");
-//                }
                
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
         model.addAttribute("mvList",mvList);
-//        service.movieinsert(mvList);
+        //영화 리스트삽입    service.movieinsert(mvList);
         
     	return "movie/movieList";
     }
