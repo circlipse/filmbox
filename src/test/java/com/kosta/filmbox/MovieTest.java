@@ -23,9 +23,14 @@ public class MovieTest {
 
 	@Autowired
 	private MovieMapper mapper;
+//	@Test
+//	public void t1() {
+//		MovieDTO dto = new MovieDTO("1", "1", "1", "1", "1");
+//		assertEquals(0, service.getMovieList());
+//	}
+//	
 	@Test
-	public void t1() {
-		MovieDTO dto = new MovieDTO("1", "1", "1", "1", "1");
-		assertEquals(0, service.getMovieList());
+	public void t2() {
+		System.out.println(mapper.updatedate());
 	}
 }

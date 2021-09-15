@@ -10,4 +10,6 @@ public interface MovieService {
 
 	public void movieinsert(List<MovieDTO> mvList);
 
+	public String updatedate();
+
 }

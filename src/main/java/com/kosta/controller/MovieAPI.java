@@ -125,6 +125,8 @@ public class MovieAPI {
         }
         model.addAttribute("mvList",mvList);
         //영화 리스트삽입    service.movieinsert(mvList);
+        String date=service.updatedate();
+        
         
     	return "movie/movieList";
     }
