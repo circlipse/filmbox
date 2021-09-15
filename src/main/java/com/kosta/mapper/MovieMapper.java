@@ -12,5 +12,6 @@ public interface MovieMapper {
 	public List<MovieDTO> getMovieList();
 	public void movieinsert(List<MovieDTO> mvList);
 	public String updatedate();
+	public void movieupdate(List<MovieDTO> mvList);
 
 }

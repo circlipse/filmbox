@@ -12,4 +12,7 @@ public interface MovieService {
 
 	public String updatedate();
 
+
+	public void movieupdate(List<MovieDTO> mvList);
+
 }

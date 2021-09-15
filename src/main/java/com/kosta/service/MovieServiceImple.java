@@ -31,6 +31,13 @@ public class MovieServiceImple implements MovieService {
 		return mvMapper.updatedate();
 	}
 
+	@Override
+	public void movieupdate(List<MovieDTO> mvList) {
+		// TODO Auto-generated method stub
+		mvMapper.movieupdate(mvList);
+		
+	}
+
 	
 
 }

@@ -29,8 +29,10 @@ public class MovieTest {
 //		assertEquals(0, service.getMovieList());
 //	}
 //	
-	@Test 
-	public void t2() {
-		System.out.println(mapper.updatedate());
-	}
+//	@Test 
+//	public void t2() {
+//		System.out.println(mapper.updatedate());
+//	}
+	
+	
 }

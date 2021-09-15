@@ -1,4 +1,5 @@
-package com.kosta.controller;
+package com.kosta.data;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -22,19 +23,16 @@ import javax.annotation.Resource;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.kosta.dto.MovieDTO;
 import com.kosta.service.MovieService;
-
-
-@Controller
-public class MovieAPI {
+@Component
+public class MovieUpdate {
+	
+	
 	
 	@Resource(name = "movieservice")
 	private MovieService service;
@@ -42,7 +40,7 @@ public class MovieAPI {
     private final String REQUEST_URL = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchWeeklyBoxOfficeList.json";
     private final String AUTH_KEY = "03778b8e03b2f65d0d2c724260f2df8c";
     private final SimpleDateFormat DATE_FMT = new SimpleDateFormat("yyyyMMdd");  //날짜형식
- 
+
     public String makeQueryString(Map<String, String> paramMap) {
         final StringBuilder sb = new StringBuilder();
  
@@ -55,10 +53,8 @@ public class MovieAPI {
  
         return sb.toString();
     }
- 
-    // API요청
-    @GetMapping("/mvview")
-    public String requestAPI(Model model) {
+	@Scheduled(fixedDelay = 60000)
+	public void requestAPI() {
         // 변수설정
         //   - 일주일 전 영화데이터 가져오기 (가장 최근데이터임. 실제 이번주껀 아직 없음)
         Calendar cal = Calendar.getInstance();
@@ -123,39 +119,10 @@ public class MovieAPI {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        model.addAttribute("mvList",mvList);
-        //영화 리스트삽입    
         service.movieupdate(mvList);
-//        String date=service.updatedate();
-        
-        
-    	return "movie/movieList";
+
     }
-    
-    
-    @GetMapping("/movieList")
-    public String movieList(Model model) {
-    	
-    	List<MovieDTO> mvList = service.getMovieList();
-   // 	MovieDTO dto = service.getMovieList();
-    	model.addAttribute("mvList",mvList);
-    	return "movie/movieList";
-    }
-    
-    
-    
-    
- 
-//    public static void main(String[] args) {
-//        // API 객체 생성
-//        MovieAPI api = new MovieAPI();
-//
-//        // API 요청
-//        api.requestAPI();
-//    }
-    
-    //네이버 영화 검색api에서 이미지 가져오기
-    public static String getImg(String title) {
+	public static String getImg(String title) {
         String clientId = "HYX4a9ygamLFJItnu0gY"; 
         String clientSecret = "vIJnIW_G5B";
 
@@ -202,7 +169,6 @@ public class MovieAPI {
        
     }
 
-
     private static String get(String apiUrl, Map<String, String> requestHeaders){
         HttpURLConnection con = connect(apiUrl);
         try {
@@ -224,7 +190,6 @@ public class MovieAPI {
             con.disconnect();
         }
     }
-
 
     private static HttpURLConnection connect(String apiUrl){
         try {
@@ -256,4 +221,3 @@ public class MovieAPI {
         }
     }
 }
- 
