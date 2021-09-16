@@ -25,7 +25,7 @@
 				<li>예매</li>
 			</ul>
 			<ul class="menu2">
-				<li>로그인</li>
+				<a href="login"><li>로그인</li></a>
 				<li>회원가입</li>
 			</ul>
 		</div>
